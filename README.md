@@ -25,7 +25,7 @@ Postgres version: 12
 
 ## Instructions to build/compile/run
 You can access the application at https://seamlessmdfhirapi.com, but if you want to build and run it:
-1. `git clone https://github.com/brunomrlima/seamlessmd_fhir_api.git`
+1. `git clone https://github.com/brunomrlima/fhir_api_seamlessmd.git`
 2. `bundle install`
 3. `rails db:create db:migrate`
 4. `rails s`
