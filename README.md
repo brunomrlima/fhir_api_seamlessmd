@@ -24,7 +24,7 @@ Postgres version: 12
     7. Create a simple table to lists out all patients in your dataset (columns can be name, birthdate, and any other relevant information you feel appropriate). Include a simple filter for this table to show only pediatric cases (patients less than age 18). Note: some considerations for you to make include what happens if the dataset is over 100,000+ patients – how do you manage load performance.
 
 ## Instructions to build/compile/run
-You can access the application at https://seamlessmdfhirapi.com, but if you want to build and run it:
+You can access the application at https://fhirapiseamlessmd.com, but if you want to build and run it:
 1. `git clone https://github.com/brunomrlima/fhir_api_seamlessmd.git`
 2. `bundle install`
 3. `rails db:create db:migrate`
