@@ -23,6 +23,14 @@ Postgres version: 12
     6. Create a simple visualization to graph the age of patients as a histogram.  You can use any library you are familiar with (e.g. google charts).
     7. Create a simple table to lists out all patients in your dataset (columns can be name, birthdate, and any other relevant information you feel appropriate). Include a simple filter for this table to show only pediatric cases (patients less than age 18). Note: some considerations for you to make include what happens if the dataset is over 100,000+ patients – how do you manage load performance.
 
+## Performance considerations
+Currently, the application doesn't support a huge dataset (e.g. over 100,000+ patients). In order to 
+support high data requests, background jobs should be implemented. [Sidekiq](https://github.com/mperham/sidekiq) is a great
+tool to manage background jobs. Moreover, to improve performance, some variables should be [cached](https://guides.rubyonrails.org/caching_with_rails.html).
+[Memcached](https://guides.rubyonrails.org/caching_with_rails.html#activesupport-cache-memcachestore), [Dalli](https://github.com/petergoldstein/dalli) 
+and Redis should be integrated in order to cache patients variables and show them to the user while the background jobs 
+will be gathering more patient data. With that, it is possible to update the statistics in real-time using AJAX.  
+
 ## Instructions to build/compile/run
 You can access the application at https://fhirapiseamlessmd.herokuapp.com, but if you want to build and run it:
 1. `git clone https://github.com/brunomrlima/fhir_api_seamlessmd.git`
