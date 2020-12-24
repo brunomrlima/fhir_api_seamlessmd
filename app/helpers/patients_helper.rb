@@ -36,7 +36,7 @@ module PatientsHelper
     if params[:pediatric]
       link_to 'All Patients', { }, { class: 'btn btn-primary' }
     else
-      link_to 'Only Pediatric', { pediatric: true }, { class: 'btn btn-secondary' }
+      link_to 'Only Pediatric', { pediatric: true, api_url: @current_url }, { class: 'btn btn-secondary' }
     end
   end
 end
