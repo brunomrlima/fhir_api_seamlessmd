@@ -1,5 +1,5 @@
 class Fetch::Patient
-  API_URL = "http://hapi.fhir.org/baseR4/Patient?birthdate=gt1950-01-01&_count=80"
+  API_URL = "http://hapi.fhir.org/baseR4/Patient?birthdate=gt1950-01-01&_count=40"
 
   attr_accessor :patients, :current_url, :next_url
 
