@@ -44,4 +44,8 @@
   </div>
 <% else %>
   No Patients found. Please check <%= link_to 'https://hapi.fhir.org/', 'https://hapi.fhir.org/', target: '_blank' %> for more infromation.
+  <br />
+  Errors Found:
+  <br />
+  <%= @issues %>
 <% end %>

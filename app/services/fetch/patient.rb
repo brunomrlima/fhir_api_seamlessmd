@@ -1,7 +1,7 @@
 class Fetch::Patient
   API_URL = "http://hapi.fhir.org/baseR4/Patient?birthdate=gt1950-01-01&_count=40"
 
-  attr_accessor :patients, :current_url, :next_url
+  attr_accessor :patients, :current_url, :next_url, :issues
 
   def initialize(api_url = API_URL)
     api_request(api_url)
@@ -16,6 +16,6 @@ class Fetch::Patient
       @current_url = response["link"][0]["url"]
       @next_url = response["link"][1]["url"]
     rescue
-      []
+      @issues = "#{response["issue"][0]["severity"]}; #{response["issue"][0]["code"]}; #{response["issue"][0]["diagnostics"]}"
     end
 end

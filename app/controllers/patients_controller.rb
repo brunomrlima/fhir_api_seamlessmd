@@ -3,10 +3,11 @@ class PatientsController < ApplicationController
 
   def index
     api_url = api_params[:api_url]
-    api_url.present? ? request = @patients = Fetch::Patient.new(api_url) : request = @patients = Fetch::Patient.new
+    api_url.present? ? request = Fetch::Patient.new(api_url) : request = Fetch::Patient.new
     @patients = request.patients
     @current_url = request.current_url
     @next_url = request.next_url
+    @issues = request.issues
     @number_of_patients = @patients&.count
     filter_pediatric if params[:pediatric]
   end
