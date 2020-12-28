@@ -7,7 +7,7 @@ class PatientsController < ApplicationController
     @patients = request.patients
     @current_url = request.current_url
     @next_url = request.next_url
-    @number_of_patients = @patients.count
+    @number_of_patients = @patients&.count
     filter_pediatric if params[:pediatric]
   end
 

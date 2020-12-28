@@ -1,43 +1,47 @@
-<div class="fixed-top text-center p-3 mb-5 bg-light">
-  <%= render partial: 'header', locals: {patients: @patients} %>
-</div>
-<br />
-<br />
+<% if @patients.present? %>
+  <div class="fixed-top text-center p-3 mb-5 bg-light">
+    <%= render partial: 'header', locals: {patients: @patients} %>
+  </div>
+  <br />
+  <br />
 
-<div class="text-center m-2">
-  <%= filter_pediatric %>
-</div>
-
-<div class="row">
-  <div class="col-md-7 col-6">
-    <%= render partial: 'table', locals: {patients: @patients} %>
+  <div class="text-center m-2">
+    <%= filter_pediatric %>
   </div>
 
-  <div class="col-md-5 col-6">
-    <canvas class="position-fixed" id="myChart" width="400" height="400"></canvas>
-    <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: <%= (1..@patients.count).to_a %>,
-                datasets: [{
-                    label: "Patients' age",
-                    data: <%= all_patients_age(@patients) %>,
+  <div class="row">
+    <div class="col-md-7 col-6">
+      <%= render partial: 'table', locals: {patients: @patients} %>
+    </div>
 
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-    </script>
+    <div class="col-md-5 col-6">
+      <canvas class="position-fixed" id="myChart" width="400" height="400"></canvas>
+      <script>
+          var ctx = document.getElementById('myChart').getContext('2d');
+          var myChart = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                  labels: <%= (1..@patients.count).to_a %>,
+                  datasets: [{
+                      label: "Patients' age",
+                      data: <%= all_patients_age(@patients) %>,
+
+                      borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true
+                          }
+                      }]
+                  }
+              }
+          });
+      </script>
+    </div>
   </div>
-</div>
+<% else %>
+  No Patients found. Please check <%= link_to 'https://hapi.fhir.org/', 'https://hapi.fhir.org/', target: '_blank' %> for more infromation.
+<% end %>
